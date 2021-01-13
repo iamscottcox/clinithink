@@ -10,6 +10,7 @@ import { fetchData } from "src/actions/data";
 import { getCategories } from "src/getters/categories";
 import { getFilteredItems } from "src/selectors/items";
 import { getSelectedCategory } from "src/getters/settings";
+import { getSortedCategories } from "src/selectors/categories";
 import { handleCategoryButtonClick } from "src/logic";
 
 interface StateProps {
@@ -71,7 +72,7 @@ const App: FC<Props> = ({
 
 export const mapStateToProps = (state: AppState): StateProps => {
   return {
-    categories: getCategories(state),
+    categories: getSortedCategories(state),
     items: getFilteredItems(state),
     selectedCategory: getSelectedCategory(state),
   };
