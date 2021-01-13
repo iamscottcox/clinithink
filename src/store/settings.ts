@@ -1,4 +1,4 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "src/actions/data";
 
 interface SettingsState {
@@ -11,14 +11,21 @@ const initialState: SettingsState = {
   favouriteCategories: [],
 };
 
-export const settings = createReducer<SettingsState>(
+export const settingsSlice = createSlice({
+  name: "settings",
   initialState,
-  (builder) => {
+  reducers: {
+    setSelectedCategory(state, { payload }) {
+      state.selectedCategory = payload;
+      return state;
+    },
+  },
+  extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, { payload }) => {
       state.favouriteCategories = payload.favourite_categories;
       return state;
     });
-  }
-);
+  },
+});
 
-export default settings;
+export default settingsSlice.reducer;
