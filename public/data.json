@@ -1,0 +1,98 @@
+{
+    "items": [
+        {
+            "title": "Avalanche",
+            "category": "Environmental Event",
+            "id": 0
+        },
+        {
+            "title": "Patient Identification",
+            "category": "Administrative Procedure",
+            "id": 1
+        },
+        {
+            "title": "Coconut",
+            "category": "Edible Substance",
+            "id": 2
+        },
+        {
+            "title": "Antidote",
+            "category": "Drug or Medicament",
+            "id": 3
+        },
+        {
+            "title": "Flood",
+            "category": "Environmental Event",
+            "id": 4
+        },
+        {
+            "title": "Accident caused by pistol",
+            "category": "Accidental Event",
+            "id": 5
+        },
+        {
+            "title": "Fog",
+            "category": "Environmental Event",
+            "id": 6
+        },
+        {
+            "title": "Analgesic",
+            "category": "Drug or Medicament",
+            "id": 7
+        },
+        {
+            "title": "Sinking",
+            "category": "Accidental Event",
+            "id": 8
+        },
+        {
+            "title": "Lemon",
+            "category": "Edible Substance",
+            "id": 9
+        },
+        {
+            "title": "Whole blood unit collection",
+            "category": "Blood Bank Procedure",
+            "id": 10
+        },
+        {
+            "title": "Biopsy Administration",
+            "category": "Administrative Procedure",
+            "id": 11
+        },
+        {
+            "title": "Lymphocyte Storage",
+            "category": "Blood Bank Procedure",
+            "id": 12
+        },
+        {
+            "title": "Vitamin",
+            "category": "Drug or Medicament",
+            "id": 13
+        },
+        {
+            "title": "Insurance Authorisation",
+            "category": "Administrative Procedure",
+            "id": 14
+        },
+        {
+            "title": "Blood compatibility test",
+            "category": "Blood Bank Procedure",
+            "id": 15
+        },
+        {
+            "title": "Fall from Haystack",
+            "category": "Accidental Event",
+            "id": 16
+        },
+        {
+            "title": "Strawberry",
+            "category": "Edible Substance",
+            "id": 17
+        }
+    ],
+    "favourite_categories": [
+        "Blood Bank Procedure",
+        "Drug or Medicament"
+    ]
+}
