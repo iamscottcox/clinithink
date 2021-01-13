@@ -7,9 +7,11 @@ import React, { FC, useEffect } from "react";
 import { Page } from "src/components/Page";
 import { connect } from "react-redux";
 import { fetchData } from "src/actions/data";
+import { getCategories } from "src/getters/categories";
 import { getItems } from "src/selectors/items";
 
 interface StateProps {
+  categories: API.Category[];
   items: API.Item[];
 }
 
@@ -19,7 +21,7 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
-const App: FC<Props> = ({ items, fetchData }) => {
+const App: FC<Props> = ({ categories, items, fetchData }) => {
   useEffect(fetchData, [fetchData]);
 
   return (
@@ -27,7 +29,7 @@ const App: FC<Props> = ({ items, fetchData }) => {
       <Typography variant="h1" align="center">
         Clinithink Test
       </Typography>
-      <Box className="items-container">
+      <Box>
         <Typography variant="h4">Items</Typography>
         <List>
           {items.map((item) => (
@@ -35,13 +37,21 @@ const App: FC<Props> = ({ items, fetchData }) => {
           ))}
         </List>
       </Box>
-      <Typography variant="h4">Categories</Typography>
+      <Box>
+        <Typography variant="h4">Categories</Typography>
+        <List>
+          {categories.map((category) => (
+            <ListItem key={category}>{category}</ListItem>
+          ))}
+        </List>
+      </Box>
     </Page>
   );
 };
 
 export const mapStateToProps = (state: AppState): StateProps => {
   return {
+    categories: getCategories(state),
     items: getItems(state),
   };
 };
