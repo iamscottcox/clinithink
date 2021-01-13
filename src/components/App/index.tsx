@@ -7,11 +7,10 @@ import React, { FC, useEffect } from "react";
 import { Page } from "src/components/Page";
 import { connect } from "react-redux";
 import { fetchData } from "src/actions/data";
-import { getCategories } from "src/getters/categories";
 import { getFilteredItems } from "src/selectors/items";
 import { getSelectedCategory } from "src/getters/settings";
 import { getSortedCategories } from "src/selectors/categories";
-import { handleCategoryButtonClick } from "src/logic";
+import { setSelectedCategory } from "src/actions/settings";
 
 interface StateProps {
   categories: API.Category[];
@@ -21,7 +20,7 @@ interface StateProps {
 
 interface DispatchProps {
   fetchData: () => void;
-  selectCategory: (category: API.Category) => void;
+  selectCategory: (category: API.Category | null) => void;
 }
 
 type Props = StateProps & DispatchProps;
@@ -34,6 +33,14 @@ const App: FC<Props> = ({
   selectCategory,
 }) => {
   useEffect(fetchData, [fetchData]);
+
+  const handleCategoryButtonClick = (category: API.Category) => {
+    if (category === selectedCategory) {
+      selectCategory(null);
+    } else {
+      selectCategory(category);
+    }
+  };
 
   return (
     <Page>
@@ -54,7 +61,7 @@ const App: FC<Props> = ({
           {categories.map((category) => (
             <ListItem key={category}>
               <Button
-                onClick={() => selectCategory(category)}
+                onClick={() => handleCategoryButtonClick(category)}
                 variant={
                   category === selectedCategory ? "contained" : undefined
                 }
@@ -83,7 +90,7 @@ export const mapDispatchToProps = (dispatch: AppDispatch): DispatchProps => ({
     dispatch(fetchData());
   },
   selectCategory(category) {
-    handleCategoryButtonClick(category);
+    dispatch(setSelectedCategory(category));
   },
 });
 
